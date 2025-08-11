@@ -1,7 +1,6 @@
 import { useRef, useState } from "react";
 
         // Task Component
-        // eslint-disable-next-line
         export default function Task  ({ task, onDragStart, onDragEnd, onResize, calendarRef, currentMonth }: {
             task: {id:number, name: string; category: string; startDay: number; endDay: number };
             onDragStart?: (taskId: number) => void;
@@ -12,10 +11,10 @@ import { useRef, useState } from "react";
 
         }) {
             const [isDragging, setIsDragging] = useState(false);
-            // eslint-disable-next-line
             const [isResizing, setIsResizing] = useState(false);
             const taskRef = useRef<HTMLDivElement | null>(null);
             
+            console.log(onDragStart,currentMonth,isResizing)
             const getCategoryClass = () => {
                 switch(task.category) {
                     case 'To Do': return 'category-todo';
@@ -85,8 +84,7 @@ import { useRef, useState } from "react";
                 setIsResizing(true);
 
                 if(!calendarRef.current) return;
-                // eslint-disable-next-line
-                const startX = e.clientX;
+                // const startX = e.clientX;
                 const tiles = calendarRef.current.querySelectorAll('.day-tile');
                 
                 const handleMouseMove = (e:MouseEvent) => {
