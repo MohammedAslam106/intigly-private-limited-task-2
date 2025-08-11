@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .task-bar {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            font-size: 12px;
+            font-weight: 500;
+            color: white;
+            cursor: move;
+            user-select: none;
+            z-index: 10;
+            transition: opacity 0.2s;
+        }
+        
+        .task-bar:hover {
+            opacity: 0.9;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        
+        .task-bar.dragging {
+            opacity: 0.5;
+            z-index: 1000;
+        }
+        
+        .resize-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 8px;
+            cursor: ew-resize;
+        }
+        
+        .resize-handle-left {
+            left: 0;
+        }
+        
+        .resize-handle-right {
+            right: 0;
+        }
+        
+        .category-todo { background-color: #3b82f6; }
+        .category-progress { background-color: #10b981; }
+        .category-review { background-color: #f59e0b; }
+        .category-completed { background-color: #8b5cf6; }
+        
+        .selection-area {
+            position: absolute;
+            background-color: rgba(59, 130, 246, 0.2);
+            border: 2px solid #3b82f6;
+            border-radius: 4px;
+            pointer-events: none;
+            z-index: 5;
+        }
+        
+        .day-tile {
+            position: relative;
+            min-height: 80px;
+            border: 1px solid #e5e7eb;
+            background: white;
+            transition: background-color 0.2s;
+        }
+        
+        .day-tile.selecting {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+        
+        .day-tile.today {
+            background-color: #fef3c7;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
